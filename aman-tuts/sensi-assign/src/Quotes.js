@@ -29,12 +29,34 @@ useEffect(() => {
       await fetch(`https://prototype.sbulltech.com/api/v2/quotes/${qoutesValue}`)
     ).json();
     let data=response.payload[qoutesValue]
-    console.log(data)
     setQoutes(data);
+    refreshFunction(data)
+    console.log(data)
+   
     
   };
 
 
+
+const refreshFunction=(value)=>{
+  let refValue=[...value]
+  let a=refValue.sort((a, b) =>
+  a.valid_till > b.valid_till ? 1 : b.valid_till > a.valid_till ? -1 : 0
+);
+ const pad = (n,s=2) => (`${new Array(s).fill(0)}${n}`).slice(-s);
+  const d = new Date();
+  let x=a[0].valid_till
+  let mainDate= `${pad(d.getFullYear(),4)}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  var date = new Date(mainDate); 
+  var date1 = date. getTime();
+  var date2ndDate=new Date(x)
+  var date2=date2ndDate. getTime()
+
+  if(date2<date1){
+    
+  }
+console.log(date2-date1)
+}
  
   const sortArray = (arr, orderBy) => {
     switch (orderBy) {
