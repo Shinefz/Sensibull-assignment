@@ -38,7 +38,7 @@ useEffect(() => {
 
 
 
-const refreshFunction=(value)=>{
+const  refreshFunction=(value)=>{
   let finalDate=0;
   let refValue=[...value]
   let a=refValue.sort((a, b) =>
@@ -53,9 +53,15 @@ const refreshFunction=(value)=>{
   var date2ndDate=new Date(x)
   var date2=date2ndDate. getTime()
 
-  if(date2<date1){
+  if(date2>date1){
      finalDate=date2-date1
+     clearTimeout(interval)
+     const interval = setTimeout(() => {
+       fetchData()
+    },finalDate);
+    
   }
+  
 
 }
  
