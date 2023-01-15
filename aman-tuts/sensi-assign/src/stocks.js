@@ -14,7 +14,8 @@ class Stocks extends Component {
     constructor(props){
         super(props);
         this.state={
-          data:[]
+          data:[],
+          filterData:[]
         }
     }
 
@@ -42,7 +43,8 @@ class Stocks extends Component {
         }
         
         this.setState({
-            data:result
+            data:result,
+            filterData:result
         })
     }
 
@@ -54,7 +56,13 @@ class Stocks extends Component {
     }
 
     checkValue(value){
-      let filter=this.state.data
+      if(value.length===0){
+        this.setState({
+          data:this.state.filterData
+        })
+      }
+      else{
+        let filter=this.state.data
     
       let toBeSearchData=[...filter]
     const fuse = new Fuse(toBeSearchData, {
@@ -69,7 +77,8 @@ class Stocks extends Component {
       return finalMap.push(value.item)
      })
      this.setState({data:finalMap})
-    console.log(finalMap)
+      }
+    
     
     }
 
@@ -85,10 +94,10 @@ class Stocks extends Component {
     let data=this.state.data
         return (
       <div>
-        <TextField  sx={{align:"center"}}  id="outlined-basic" margin="dense" label="enter value" variant="outlined"  onChange={(e)=>this.checkValue(e.target.value)}/>
+        <TextField  style={{display:"flex",justifyContent:"center",textAlign:"center",width:"50%",margin:"30px 20px 30px 450px" }}  id="outlined-basic" margin="dense" label="enter value" variant="outlined"  onChange={(e)=>this.checkValue(e.target.value)}/>
 
-<TableContainer component={Paper}>
-      <Table  size={"small"} sx={{px:20}} aria-label="simple table">
+<TableContainer style={{display:"flex",justifyContent:"center" }} component={Paper}>
+      <Table  size={"small"} style={{ width: 990}} aria-label="simple table">
         <TableHead>
           <TableRow>
             
