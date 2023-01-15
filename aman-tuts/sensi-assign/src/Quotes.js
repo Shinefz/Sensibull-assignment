@@ -86,8 +86,9 @@ const  refreshFunction=(value)=>{
 
     return(
       <>
-      <TableContainer component={Paper}>
-      <Table  size={"small"} sx={{ minWidth: 10,padding:"20px" }} aria-label="simple table">
+      <p style={{display:"flex",justifyContent:"center"}}>Quotes Value</p>
+      <TableContainer style={{display:"flex",justifyContent:"center",margin:"20px" }} component={Paper}>
+      <Table  size={"small"} style={{ width: 990}} aria-label="simple table">
         <TableHead>
           <TableRow>
             
