@@ -39,6 +39,7 @@ useEffect(() => {
 
 
 const refreshFunction=(value)=>{
+  let finalDate=0;
   let refValue=[...value]
   let a=refValue.sort((a, b) =>
   a.valid_till > b.valid_till ? 1 : b.valid_till > a.valid_till ? -1 : 0
@@ -53,9 +54,9 @@ const refreshFunction=(value)=>{
   var date2=date2ndDate. getTime()
 
   if(date2<date1){
-    
+     finalDate=date2-date1
   }
-console.log(date2-date1)
+
 }
  
   const sortArray = (arr, orderBy) => {
