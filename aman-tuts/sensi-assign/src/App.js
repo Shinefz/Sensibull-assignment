@@ -1,4 +1,4 @@
-import Sensi from "./Sensi";
+import Stocks from "./stocks";
 import Quotes from "./Quotes";
 import React from 'react';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
@@ -8,7 +8,7 @@ function App() {
     <div>
        <Router>
        <Routes>
-      <Route path="/" element={<Sensi />} />
+      <Route path="/" element={<Stocks />} />
       <Route path="/Quotes" element={<Quotes />} />
       </Routes>
       </Router>

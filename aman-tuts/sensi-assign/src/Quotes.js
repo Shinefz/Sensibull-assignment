@@ -49,13 +49,12 @@ const  refreshFunction=(value)=>{
   let x=a[0].valid_till
   let mainDate= `${pad(d.getFullYear(),4)}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
   var date = new Date(mainDate); 
-  var date1 = date. getTime();
+  var date1 = date.getTime();
   var date2ndDate=new Date(x)
-  var date2=date2ndDate. getTime()
+  var date2=date2ndDate.getTime()
 
   if(date2>date1){
      finalDate=date2-date1
-     clearTimeout(interval)
      const interval = setTimeout(() => {
        fetchData()
     },finalDate);
