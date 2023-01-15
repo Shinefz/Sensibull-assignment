@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import Fuse from 'fuse.js'
+import Fuse from 'fuse.js';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { TextField } from '@mui/material';
 
 
 class Sensi extends Component {
@@ -63,38 +71,81 @@ class Sensi extends Component {
     
     }
 
+      
+    
+    
+
 
 
     render() {
+    
+
     let data=this.state.data
         return (
-            <div>
-                
-                <input onChange={(e)=>this.checkValue(e.target.value)} type="text"></input>
+      //       <div>
+      // <input onChange={(e)=>this.checkValue(e.target.value)} type="text"></input>
+      //          
 
-                <table>
-        <thead>
-          <tr>
-            <th>Symbol</th>
-            <th>name</th>
-            <th>category</th>
-            <th>ValidTill</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data && data.map((value, key) => {
-            return (
-              <tr key={key}>
-                <td onClick={(e)=>this.redirectUrl(value.Symbol)}>{value.Symbol}</td>
-                <td>{value.Name}</td>
-                <td>{value.Sector}</td>
-                <td>{value.Validtill}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-            </div>
+      //           <table>
+      //   <thead>
+      //     <tr>
+      //       <th>Symbol</th>
+      //       <th>name</th>
+      //       <th>category</th>
+      //       <th>ValidTill</th>
+      //     </tr>
+      //   </thead>
+      //   <tbody>
+      //     {data && data.map((value, key) => {
+      //       return (
+      //         <tr key={key}>
+      //           <td onClick={(e)=>this.redirectUrl(value.Symbol)}>{value.Symbol}</td>
+      //           <td>{value.Name}</td>
+      //           <td>{value.Sector}</td>
+      //           <td>{value.Validtill}</td>
+      //         </tr>
+      //       );
+      //     })}
+      //   </tbody>
+      // </table>
+      //       </div>
+
+
+      <div>
+        <TextField  className='textCha' id="outlined-basic" margin="dense" label="enter value" variant="outlined"  onChange={(e)=>this.checkValue(e.target.value)}/>
+
+<TableContainer component={Paper}>
+      <Table  size={"small"} sx={{ minWidth: 10 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            
+            <TableCell align="center">Symbol</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Category</TableCell>
+            <TableCell align="center">ValidTill</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data && data.map((row) => (
+            <TableRow
+              key={row.name}
+            
+            >
+              <TableCell  onClick={(e)=>this.redirectUrl(row.Symbol)} component="th" scope="row">
+                {row.Symbol}
+              </TableCell>
+              <TableCell  align="center">{row.Name}</TableCell>
+              <TableCell align="center">{row.Sector}</TableCell>
+              <TableCell align="center">{row.Validtill}</TableCell>
+              
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+      </div>
+
+      
         );
     }
 }
